@@ -30,5 +30,6 @@ jobs:
           repoVisibility: 'private'
           securityToken: ${{ secrets.REPO_TOKEN }}
           #envsToRepoSecrets: ORG_TOKEN
+          # Possible to transfer PATs and secrets with it
       - name: Get the repo URL
         run: echo "The repo URL is ${{ steps.create-repo.outputs.repoUrl }}"
