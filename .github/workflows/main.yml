@@ -1,4 +1,4 @@
-name: 'Workflow Example'
+name: 'Repo Creation'
 on:
   workflow_dispatch:
     inputs:
@@ -23,11 +23,12 @@ jobs:
         uses: ./
         with:
          # zipPath: 'examples/test.zip'
+         # possible to add files as a inital commit
           repoName: '${{ github.event.inputs.repo-name }}'
          # repoOrg: 'defencedigital'
           repoDescription: '${{ github.event.inputs.repo-description }}'
           repoVisibility: 'private'
           securityToken: ${{ secrets.REPO_TOKEN }}
-          envsToRepoSecrets: ORG_TOKEN
+          #envsToRepoSecrets: ORG_TOKEN
       - name: Get the repo URL
         run: echo "The repo URL is ${{ steps.create-repo.outputs.repoUrl }}"
