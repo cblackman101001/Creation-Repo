@@ -20,6 +20,7 @@ jobs:
         with:
           zipPath: 'examples/test.zip'
           repoName: '${{ github.event.inputs.repo-name }}'
+          repoOrg: 'defencedigital'
           repoDescription: 'My repo description'
           repoVisibility: 'private'
           securityToken: ${{ secrets.REPO_TOKEN }}
