@@ -1,0 +1,40 @@
+name: 'Create GitHub Repo'
+description: 'Create and Initialize a GitHub repository from a zip file, and create repo secrets from environment variables'
+branding:
+  icon: 'book'
+  color: 'green'
+inputs:
+  zipPath:
+    description: 'Path to zip file'
+    required: false
+  repoOrg:
+    description: 'Organization name of the repo'
+    required: false
+  repoName:
+    description: 'Repository name'
+    required: true
+  repoDescription:
+    description: 'Repository description'
+    required: false
+    default: ''
+  repoVisibility:
+    type: 'choice'
+    description: 'Repository visibility'
+    required: false
+    choices:
+      - 'private'
+      - 'public'
+    default: 'private'
+  securityToken:
+    description: 'Security token'
+    required: true
+  envsToRepoSecrets:
+    description: 'Environment variables to secrets'
+    required: false
+    default: ''
+outputs:
+  repoUrl: # id of output
+    description: 'The Repository URL'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
