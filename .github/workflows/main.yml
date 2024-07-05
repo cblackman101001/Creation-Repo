@@ -10,7 +10,7 @@ on:
 jobs:
   test:
     env:
-      ORG_TOKEN: ${{ secrets.ORG_TOKEN }}
+      ORG_TOKEN: ${{ secrets.REPO_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
           repoName: '${{ github.event.inputs.repo-name }}'
           repoDescription: 'My repo description'
           repoVisibility: 'private'
-          securityToken: ${{ secrets.ORG_TOKEN }}
+          securityToken: ${{ secrets.REPO_TOKEN }}
           envsToRepoSecrets: ORG_TOKEN
       - name: Get the repo URL
         run: echo "The repo URL is ${{ steps.create-repo.outputs.repoUrl }}"
