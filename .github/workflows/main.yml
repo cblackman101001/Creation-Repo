@@ -18,9 +18,9 @@ jobs:
         id: create-repo
         uses: ./
         with:
-          zipPath: 'examples/test.zip'
+         # zipPath: 'examples/test.zip'
           repoName: '${{ github.event.inputs.repo-name }}'
-          repoOrg: 'defencedigital'
+         # repoOrg: 'defencedigital'
           repoDescription: 'My repo description'
           repoVisibility: 'private'
           securityToken: ${{ secrets.REPO_TOKEN }}
