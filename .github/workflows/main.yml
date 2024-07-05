@@ -1,0 +1,28 @@
+name: 'Workflow Example'
+on:
+  workflow_dispatch:
+    inputs:
+      repo-name: 
+        description: 'Name of the repository to be created'
+        required: true
+        default: ''
+
+jobs:
+  test:
+    env:
+      ORG_TOKEN: ${{ secrets.ORG_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create GitHub Repo
+        id: create-repo
+        uses: ./
+        with:
+          zipPath: 'examples/test.zip'
+          repoName: '${{ github.event.inputs.repo-name }}'
+          repoDescription: 'My repo description'
+          repoVisibility: 'private'
+          securityToken: ${{ secrets.ORG_TOKEN }}
+          envsToRepoSecrets: ORG_TOKEN
+      - name: Get the repo URL
+        run: echo "The repo URL is ${{ steps.create-repo.outputs.repoUrl }}"
