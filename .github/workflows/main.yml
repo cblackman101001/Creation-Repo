@@ -6,6 +6,10 @@ on:
         description: 'Name of the repository to be created'
         required: true
         default: ''
+      repo-Description:
+        description: 'Description of repo'
+        required: true
+        default: ''
 
 jobs:
   test:
@@ -21,7 +25,7 @@ jobs:
          # zipPath: 'examples/test.zip'
           repoName: '${{ github.event.inputs.repo-name }}'
          # repoOrg: 'defencedigital'
-          repoDescription: 'My repo description'
+          repoDescription: '${{ github.event.inputs.repo-description }}'
           repoVisibility: 'private'
           securityToken: ${{ secrets.REPO_TOKEN }}
           envsToRepoSecrets: ORG_TOKEN
